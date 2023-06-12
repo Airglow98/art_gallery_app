@@ -1,17 +1,18 @@
-import useSWR from "swr";
-import ArtPieces from "@/components/ArtPieces/ArtPieces";
+import Spotlight from "@/components/Spotlight/Spotlight";
+import { useStore } from "./_app";
 
-export default function HomePage() {
-  const { data, error, isLoading } = useSWR(
-    "https://example-apis.vercel.app/api/art"
-  );
-  if (error) return;
-  <div>failed to load</div>;
-  if (isLoading) return;
-  <div>loading...</div>;
+export default function Index() {
+  const { data } = useStore();
   return (
-    <>
-      <ArtPieces pieces={data} />
-    </>
+    <Spotlight
+      image={data.map((piece) => {
+        const image = piece.imageSource;
+        return image;
+      })}
+      artist={data.map((piece) => {
+        const artist = piece.artist;
+        return artist;
+      })}
+    />
   );
 }

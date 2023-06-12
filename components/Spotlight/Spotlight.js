@@ -1,15 +1,3 @@
-/* import { useState, useEffect } from "react";
-
-export default function Spotlight({ image, artist }) {
-  const [spotlightImage, setSpotlightImage] = useState([image, artist]);
-  console.log(spotlightImage);
-  function getRandomArtPiece(images) {
-    const randomImageIndex = Math.floor(Math.random() * images.length);
-    setSpotlightImage(images[randomImageIndex]);
-  }
-  return <>{spotlightImage}</>;
-}
- */
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
