@@ -10,16 +10,3 @@ export default function ArtPiecePreview({ image, title, artist }) {
     </li>
   );
 }
-
-export default function ArtPiecePreview({image,title,artist}){
-return(
-    <>
-    <li> <Image role="img"
-    src={image}
-  height={216}
-  width={144}
-    alt="A picture"/>
-  <title>{title}</title> 
-  {artist}</li>
-    </>
-)}
