@@ -2,7 +2,6 @@
 import Layout from "@/components/Layout/Layout";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
-<<<<<<< HEAD
 import useSWR from "swr";
 import { create } from "zustand";
 
@@ -13,8 +12,6 @@ const useStore = create((set) => ({
 
 export { useStore };
 
-=======
->>>>>>> main
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
@@ -34,10 +31,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <SWRConfig value={{ fetcher }}>
-<<<<<<< HEAD
         <Layout />
-=======
->>>>>>> main
         <GlobalStyle />
         <Component {...pageProps} />
       </SWRConfig>

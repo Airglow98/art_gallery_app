@@ -5,16 +5,6 @@ import Spotlight from "../Spotlight/Spotlight";
 export default function ArtPieces({ pieces }) {
   return (
     <>
-      <Spotlight
-        image={pieces.map((piece) => {
-          const image = piece.imageSource;
-          return image;
-        })}
-        artist={pieces.map((piece) => {
-          const artist = piece.artist;
-          return artist;
-        })}
-      />
       <ul>
         {pieces.map((piece) => (
           <ArtPiecePreview
