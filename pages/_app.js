@@ -16,9 +16,9 @@ export { useStore };
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const [artPiecesInfo, setArtPiecesInfo] = useState(false);
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
   const { data, setData } = useStore();
-  const [modifiedData, setModifiedData] = useState({ ...data });
+
   const { error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher,
@@ -30,15 +30,21 @@ export default function App({ Component, pageProps }) {
   <div>failed to load</div>;
   if (isLoading) return;
   <div>loading...</div>;
-  /*  function handleToggleFavorite(slug) {
-    modifiedData.map((dataObject) => {
-      if (dataObject.slug === slug) {
-        return { ...dataObject, isFavorite: !artPiecesInfo };
-      }
-      return dataObject;
-    });
-  } */
 
+  function handleToggleFavorite(slug) {
+    setArtPiecesInfo((artPiecesInfo) => {
+      const info = artPiecesInfo.find((info) => info.slug === slug);
+
+      if (info) {
+        return artPiecesInfo.map((info) =>
+          info.slug === slug ? { ...info, isFavorite: !info.isFavorite } : info
+        );
+      }
+      console.log(slug);
+
+      return [...artPiecesInfo, { slug, isFavorite: true }];
+    });
+  }
   return (
     <>
       <SWRConfig value={{ fetcher }}>
