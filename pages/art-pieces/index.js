@@ -6,7 +6,7 @@ export default function ArtPiecesIndex({}) {
   const { data } = useStore();
   const router = useRouter();
   function handleClick(slug) {
-    router.push(`/artpiece/${slug}`);
+    router.push(`/art-pieces/${slug}`);
   }
 
   return (

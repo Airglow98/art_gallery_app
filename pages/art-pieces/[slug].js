@@ -1,18 +1,21 @@
 import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
+import { useStore } from "../_app";
 
-export default function ArtPiece({ pieces }) {
+export default function ArtPiece() {
   const router = useRouter();
+  const { data } = useStore();
   const { slug } = router.query;
-  const thisArtPeace = pieces.find((piece) => piece.slug === slug);
+  const thisArtPeace = data.find((piece) => piece.slug === slug);
+  console.log(thisArtPeace);
   if (!thisArtPeace) {
     return <div>This art piece does not exist</div>;
   }
-  const { imageSource, title, artist, year, genre } = thisArtPeace;
+  const { imageSource, name, artist, year, genre } = thisArtPeace;
   return (
     <ArtPieceDetails
       image={imageSource}
-      title={title}
+      title={name}
       artist={artist}
       year={year}
       genre={genre}
