@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
   <div>failed to load</div>;
   if (isLoading) return;
   <div>loading...</div>;
-  console.log(data);
+
   return (
     <>
       <SWRConfig value={{ fetcher }}>
