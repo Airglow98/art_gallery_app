@@ -4,6 +4,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import { create } from "zustand";
+import { useState } from "react";
 
 const useStore = create((set) => ({
   data: null,
@@ -15,7 +16,9 @@ export { useStore };
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
+  const [artPiecesInfo, setArtPiecesInfo] = useState(false);
   const { data, setData } = useStore();
+  const [modifiedData, setModifiedData] = useState({ ...data });
   const { error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher,
@@ -27,13 +30,21 @@ export default function App({ Component, pageProps }) {
   <div>failed to load</div>;
   if (isLoading) return;
   <div>loading...</div>;
-  console.log(data);
+  /*  function handleToggleFavorite(slug) {
+    modifiedData.map((dataObject) => {
+      if (dataObject.slug === slug) {
+        return { ...dataObject, isFavorite: !artPiecesInfo };
+      }
+      return dataObject;
+    });
+  } */
+
   return (
     <>
       <SWRConfig value={{ fetcher }}>
         <Layout />
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Component handleToggleFavorite={handleToggleFavorite} {...pageProps} />
       </SWRConfig>
     </>
   );
