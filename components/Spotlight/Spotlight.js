@@ -7,28 +7,21 @@ export default function Spotlight({
   image,
   artist,
   handleToggleFavorite,
+  artPiecesInfo,
 }) {
-  const [spotlightImage, setSpotlightImage] = useState({
-    image: "",
-    artist: "",
-  });
+  const isFavorite = artPiecesInfo.find(
+    (info) => info.slug === slug
+  )?.isFavorite;
 
-  function getRandomArtPiece(image) {
-    const randomImageIndex = Math.floor(Math.random() * image.length);
-    setSpotlightImage({
-      image: image[randomImageIndex],
-      artist: artist[randomImageIndex],
-    });
-  }
-
-  useEffect(() => {
-    getRandomArtPiece(image);
-  }, []);
   return (
     <>
-      <FavoriteButton onToggleFavorite={handleToggleFavorite} slug={slug} />
-      <Image alt="" src={spotlightImage.image} width={144} height={216} />
-      <p>{spotlightImage.artist}</p>
+      <FavoriteButton
+        onToggleFavorite={handleToggleFavorite}
+        slug={slug}
+        isFavorite={isFavorite}
+      />
+      <Image alt="image" src={image} width={144} height={216} />
+      <p>{artist}</p>
     </>
   );
 }
