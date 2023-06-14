@@ -1,6 +1,10 @@
 import ArtPiecePreview from "../ArtPiecesPreview/ArtPiecesPreview";
 
-export default function ArtPieces({ pieces, handleToggleFavorite }) {
+export default function ArtPieces({
+  pieces,
+  handleToggleFavorite,
+  artPiecesInfo,
+}) {
   return (
     <>
       <ul>
@@ -12,6 +16,7 @@ export default function ArtPieces({ pieces, handleToggleFavorite }) {
             artist={piece.artist}
             slug={piece.slug}
             handleToggleFavorite={handleToggleFavorite}
+            artPiecesInfo={artPiecesInfo}
           />
         ))}
       </ul>

@@ -9,7 +9,11 @@ export default function ArtPiecesIndex({
 
   return (
     <>
-      <ArtPieces pieces={data} handleToggleFavorite={handleToggleFavorite} />
+      <ArtPieces
+        pieces={data}
+        handleToggleFavorite={handleToggleFavorite}
+        artPiecesInfo={artPiecesInfo}
+      />
     </>
   );
 }

@@ -8,10 +8,20 @@ export default function ArtPiecePreview({
   artist,
   handleToggleFavorite,
   slug,
+  artPiecesInfo,
 }) {
+  const isFavorite = artPiecesInfo.find(
+    (info) => info.slug === slug
+  )?.isFavorite;
+  console.log("isFavorite", isFavorite);
+
   return (
     <li>
-      <FavoriteButton onToggleFavorite={handleToggleFavorite} slug={slug} />
+      <FavoriteButton
+        onToggleFavorite={handleToggleFavorite}
+        slug={slug}
+        isFavorite={isFavorite}
+      />
       <Link href={`/art-pieces/>${slug}`} passHref legacyBehavior>
         <div>
           <h2>{title}</h2>
