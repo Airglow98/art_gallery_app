@@ -9,7 +9,7 @@ export default function ArtPiecePreview({
   slug,
 }) {
   return (
-    <li>
+    <li onClick={() => onClick(image)}>
       <h2>{title}</h2>
       <FavoriteButton onToggleFavorite={handleToggleFavorite} slug={slug} />
       <Image role="img" src={image} height={216} width={144} alt="A picture" />
