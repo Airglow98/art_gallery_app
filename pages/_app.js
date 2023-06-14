@@ -27,10 +27,8 @@ export default function App({ Component, pageProps }) {
       onSuccess: setData, // Speichere die abgerufenen Daten im Zustand
     }
   );
-  if (error) return;
-  <div>failed to load</div>;
-  if (isLoading) return;
-  <div>loading...</div>;
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
 
   function handleToggleFavorite(slug) {
     updateArtPiecesInfo((draft) => {
@@ -39,15 +37,13 @@ export default function App({ Component, pageProps }) {
       // if the movie is already in the state, toggle the isFavorite property
       if (info) {
         info.isFavorite = !info.isFavorite;
-        console.log("fall1");
       } else {
         // if the movie is not in the state, add it with isFavorite set to true
         draft.push({ slug, isFavorite: true });
-        console.log("fall2");
       }
     });
   }
-  console.log(artPiecesInfo);
+
   {
     return (
       <>
@@ -56,6 +52,7 @@ export default function App({ Component, pageProps }) {
           <GlobalStyle />
           <Component
             handleToggleFavorite={handleToggleFavorite}
+            artPiecesInfo={artPiecesInfo}
             {...pageProps}
           />
         </SWRConfig>

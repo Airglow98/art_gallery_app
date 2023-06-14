@@ -1,11 +1,19 @@
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
 import { useStore } from "../_app";
 
-export default function ArtPiecesIndex({ handleToggleFavorite }) {
+export default function ArtPiecesIndex({
+  handleToggleFavorite,
+  artPiecesInfo,
+}) {
   const { data } = useStore();
+
   return (
     <>
-      <ArtPieces pieces={data} handleToggleFavorite={handleToggleFavorite} />
+      <ArtPieces
+        pieces={data}
+        handleToggleFavorite={handleToggleFavorite}
+        artPiecesInfo={artPiecesInfo}
+      />
     </>
   );
 }
